@@ -14,7 +14,7 @@
                transform: translate(+8.5%, +12%);
                display: flex;
                width: 1300px;
-               height: 75px;
+               height: 130px;
                border-radius: 40px;
                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
                font-family: "COURIER";
@@ -84,21 +84,18 @@
 
 <header class="p-3" style="background-color: #233343; color: white;">
     <div class="container">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <a href="{% url 'home' %}" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none"> 
-            <span class="ms-2 me-lg-5">KatAvia</span>
+        <div class="d-flex flex-wrap align-items-center justify-content justify-content-lg-start">
+            <a href="{% url 'home' %}" class="d-flex align-items-center text-white text-decoration-none">
+                <span class="ms-2 me-lg-5">KatAvia</span>
             </a>
-
-            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content mb-md-0 mx-auto">
+        
+            <ul class="nav col-12 col-lg-auto me-auto mb-2 justify-content-start mb-md-0">
                 <li><a href="{% url 'about' %}" class="nav-link px-2 text-white me-lg-4">О компании</a></li>
                 <li><a href="{% url 'flight_list' %}" class="nav-link px-2 text-white me-lg-4">Расписание</a></li>
                 <li><a href="{% url 'contacts' %}" class="nav-link px-2 text-white me-lg-4">Контакты</a></li>
             </ul>
-
-            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-                <input type="search" class="form-control form-control-light text-bg-light" placeholder="Поиск..." aria-label="Поиск">
-            </form>
-
+                       
+    
             <div class="text-end">
                 {% if user.is_authenticated %}
                     <span class="me-2">{{ user.username }}</span>
@@ -108,8 +105,19 @@
                     <button type="button" class="btn btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#registerModal">Регистрация</button>
                 {% endif %}
             </div>
-        </div> 
-    </div>
+        </div>
+    
+        <div class="row mt-3">
+            <div class="col-12 col-lg-auto mb-3 mb-lg-0 ms-auto">
+                <form class="input-group" role="search" method="GET" action="{% url 'search_flights' %}">
+                    <input type="date" class="form-control col-2" id="start_date" name="start_date" placeholder="Дата отправления" aria-label="Дата отправления">
+                    <input type="text" class="form-control col-3" id="departure_location" name="departure_location" placeholder="Место отправления" aria-label="Место отправления">
+                    <input type="text" class="form-control col-3" id="arrival_location" name="arrival_location" placeholder="Место прибытия" aria-label="Место прибытия">
+                    <button type="submit" class="btn btn-outline-light col-2">Искать</button>
+                </form>
+            </div>
+        </div>
+    </div>    
 </header>
 
 <main>
