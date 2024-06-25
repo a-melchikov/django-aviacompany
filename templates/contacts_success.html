@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+  .success-message {
+    text-align: center;
+    margin-top: 50px;
+    font-family: PT Serif;
+  }
+  
+  .back-to-contact {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .back-to-contact a {
+    color: #233343;
+    text-decoration: none;
+    font-weight: bold;
+  }
+</style>
+
+<div class="success-message">
+    <h2>Ваше сообщение успешно отправлено!</h2>
+    <p>Мы получили ваше сообщение и скоро свяжемся с вами.</p>
+</div>
+
+<div class="back-to-contact">
+    <a href="{% url 'contacts' %}">Вернуться к форме обратной связи</a>
+</div>
+{% endblock %}
