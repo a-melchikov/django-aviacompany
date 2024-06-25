@@ -1,0 +1,193 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Летай по выгодным ценам с KatAvia!</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+           header {
+               transform: translate(+8.5%, +12%);
+               display: flex;
+               width: 1300px;
+               height: 75px;
+               border-radius: 40px;
+               box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+               font-family: "COURIER";
+               font-size: 17.5px;
+               margin-bottom: 40px;
+           }
+           #loginModal .modal-header {
+               background-color: #FFFFFF;
+               text-align: center;
+               width: 100%;
+           }
+
+           #loginModal .modal-title {
+               font-family: 'CENTURY GOTHIC', sans-serif; /* Шрифт заголовка */
+               color: #333; /* Цвет текста заголовка */
+               text-align: center;
+               width: 100%;
+           }
+
+           #loginModal  .modal-body {
+               font-family: 'CENTURY GOTHIC', sans-serif;
+               color: #212529; /* Темно-серый цвет текста */
+           }
+
+           #loginModal .btn-primary { /* Стили для кнопки "Войти" */
+               background-color: #233343; /* Цвет фона кнопки */
+               border-color: #233343; /* Цвет границы кнопки */
+               color: white; /* Цвет текста кнопки */
+               width: 100%;
+           }
+
+           #loginModal .btn-primary:hover { /* Цвет при наведении */
+               background-color: #3a5570;
+               border-color: #3a5570;
+           }
+
+           #registerModal .modal-header {
+               background-color: #FFFFFF;
+               text-align: center;
+           }
+
+           #registerModal .modal-title {
+               font-family: 'CENTURY GOTHIC', serif;
+               color: #555;
+               text-align: center;
+               width: 100%;
+           }
+
+           #registerModal  .modal-body {
+               font-family: 'CENTURY GOTHIC', sans-serif;
+               color: #212529;
+           }
+           #registerModal .btn-primary {
+               background-color: #233343;
+               border-color: #233343;
+               color: white;
+               width: 100%;
+           }
+
+           #registerModal .btn-primary:hover { /* Цвет при наведении */
+               background-color: #3a5570;
+               border-color: #3a5570;
+           }
+    </style>
+</head>
+<body>
+
+<header class="p-3" style="background-color: #233343; color: white;">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="{% url 'home' %}" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none"> 
+            <span class="ms-2 me-lg-5">KatAvia</span>
+            </a>
+
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content mb-md-0 mx-auto">
+                <li><a href="{% url 'about' %}" class="nav-link px-2 text-white me-lg-4">О компании</a></li>
+                <li><a href="{% url 'flights' %}" class="nav-link px-2 text-white me-lg-4">Расписание</a></li>
+                <li><a href="{% url 'contacts' %}" class="nav-link px-2 text-white me-lg-4">Контакты</a></li>
+            </ul>
+
+            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+                <input type="search" class="form-control form-control-light text-bg-light" placeholder="Поиск..." aria-label="Поиск">
+            </form>
+
+            <div class="text-end">
+                {% if user.is_authenticated %}
+                    <span class="me-2">{{ user.username }}</span>
+                    <a href="{% url 'logout' %}" class="btn btn-outline-light me-2">Выйти</a>
+                {% else %}
+                    <button type="button" class="btn btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#loginModal">Логин</button>
+                    <button type="button" class="btn btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#registerModal">Регистрация</button>
+                {% endif %}
+            </div>
+        </div> 
+    </div>
+</header>
+
+<main>
+    {% if messages %}
+        <div class="container mt-4">
+            {% for message in messages %}
+                <div class="alert {% if message.tags %}alert-{{ message.tags }}{% else %}alert-info{% endif %} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+    {% block content %}{% endblock %}
+</main>
+
+<!-- Модальное окно для входа -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="loginModalLabel">Вход</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{% url 'login' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="loginEmail" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="loginEmail" name="username" aria-describedby="emailHelp" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="loginPassword" class="form-label">Пароль</label>
+                        <input type="password" class="form-control" id="loginPassword" name="password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Войти</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Модальное окно для регистрации -->
+<div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="registerModalLabel">Регистрация</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{% url 'register' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="registerUsername" class="form-label">Имя пользователя</label>
+                        <input type="text" class="form-control" id="registerUsername" name="username" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="registerEmail" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="registerEmail" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="registerPassword" class="form-label">Пароль</label>
+                        <input type="password" class="form-control" id="registerPassword" name="password" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="confirmPassword" class="form-label">Повторите пароль</label>
+                        <input type="password" class="form-control" id="confirmPassword" name="confirm_password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+</body>
+</html>

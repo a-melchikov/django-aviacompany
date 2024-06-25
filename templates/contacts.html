@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+  .contact-section {
+    padding: 5px;
+    text-align: center;
+    font-family: PT Serif;
+  }
+
+  .contact-info, 
+  .contact-form, 
+  .social-media {
+    margin: 30px auto;
+    padding: 10px;
+    background-color: #f2f2f2;
+    border-radius: 8px;
+    max-width: 600px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  h2, h3 {
+    color: #333;
+  }
+
+  label {
+    display: block;
+    margin-top: 10px;
+    font-weight: 600;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  textarea {
+    height: 120px;
+  }
+
+  button[type="submit"] {
+    background-color: #233343;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+  }
+
+  button[type="submit"]:hover {
+    background-color: #233343;
+  }
+
+  .social-media ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+  }
+
+  .social-media li {
+    display: inline-block;
+    margin: 0 10px;
+  }
+
+  .social-media a {
+    color: #333;
+    font-size: 20px;
+  }
+</style>
+
+<div class="contact-section">
+    <p>Если у вас есть вопросы или вы хотите связаться с нами, пожалуйста, используйте следующую информацию:</p>
+    
+    <div class="contact-info">
+        <h3>Центральный офис</h3>
+        <p>Авиакомпания KatAvia</p>
+        <p>ул. Авиационная, д. 10</p>
+        <p>Москва, Россия, 123456</p>
+        <p><strong>Телефон:</strong> +7 (495) 123-45-67</p>
+        <p><strong>Факс:</strong> +7 (495) 765-43-21</p>
+        <p><strong>Email:</strong> <a href="mailto:info@katavia.ru">info@katavia.ru</a></p> 
+    </div>
+    
+    <div class="contact-form">
+        <h3>Форма обратной связи</h3>
+        <form id="contactForm">
+            <label for="name">Имя:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="message">Сообщение:</label>
+            <textarea id="message" name="message" required></textarea>
+            
+            <button type="submit">Отправить</button>
+        </form>
+    </div>
+    
+    <div class="social-media">
+        <h3>Мы в социальных сетях</h3>
+        <p>Следите за нашими новостями и акциями в социальных сетях:</p>
+        <ul>
+            <li><a href="https://www.instagram.com/kaatrinus?igsh=MWtjeXRxYTFyb3RxNw%3D%3D&utm_source=qr" target="_blank">Instagram</a></li>
+            <li><a href="https://vk.com/kaatrinus" target="_blank">ВКонтакте</a></li>
+        </ul>
+    </div>
+</div>
+{% endblock content %}

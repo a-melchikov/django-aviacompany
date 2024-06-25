@@ -1,0 +1,156 @@
+{% extends "base.html" %}
+{% block content %} 
+<section class="company-introduction">
+    <h2>Знакомство с компанией</h2>
+    <p>Добро пожаловать в KatAvia, авиакомпанию с богатой историей и современным подходом к путешествиям. Мы гордимся нашим профессиональным экипажем, который каждый день стремится предоставить вам лучший сервис. </p>
+    <p1>Наша миссия — обеспечить безопасность, комфорт и приятные впечатления от каждого полета.</p1>
+</section>
+
+    <style>
+        .company-introduction {
+            text-align: center;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .company-introduction h2 {
+            font-size: 2em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        body {
+            font-family: PT Serif, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f8f8f8;
+        }
+        .crew-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+        .crew-member {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin: 10px;
+            width: calc(33.333% - 20px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        .crew-photo {
+            width: 100%;
+            height: auto;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+        }
+        .crew-info {
+            padding: 15px;
+        }
+        .crew-name {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+        .crew-details {
+            font-size: 0.9em;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<div class="crew-container">
+    <div class="crew-member">
+        <img src="/static/img/k5.jpg" alt="Имя члена экипажа" class="crew-photo">
+        <div class="crew-info">
+            <div class="crew-name">Артемис Лунный Рыцарь</div>
+            <div class="crew-details">
+                <p>Стаж работы: 15 лет</p>
+                <p>Количество полетов: 669</p>
+            </div>
+        </div>
+    </div>
+    <div class="crew-member">
+        <img src="/static/img/k6.jpg" alt="Имя члена экипажа" class="crew-photo">
+        <div class="crew-info">
+            <div class="crew-name">Цезарь Август Мурлыкающий</div>
+            <div class="crew-details">
+                <p>Стаж работы: 17 лет</p>
+                <p>Количество полетов: 714</p>
+            </div>
+        </div>
+    </div>
+        <div class="crew-member">
+        <img src="/static/img/k4.jpg" alt="Имя члена экипажа" class="crew-photo">
+        <div class="crew-info">
+            <div class="crew-name">Ахиллес Победоносный</div>
+            <div class="crew-details">
+                <p>Стаж работы: 9 лет</p>
+                <p>Количество полетов: 552</p>
+            </div>
+        </div>
+    </div>
+            <div class="crew-member">
+        <img src="/static/img/k3.jpg" alt="Имя члена экипажа" class="crew-photo">
+        <div class="crew-info">
+            <div class="crew-name">Осирис Хранитель Тайн</div>
+            <div class="crew-details">
+                <p>Стаж работы: 18 лет</p>
+                <p>Количество полетов: 752</p>
+            </div>
+        </div>
+    </div>
+            <div class="crew-member">
+        <img src="/static/img/k9.jpg" alt="Имя члена экипажа" class="crew-photo">
+        <div class="crew-info">
+            <div class="crew-name">Изабелла Королева Сердец</div>
+            <div class="crew-details">
+                <p>Стаж работы: 15 лет</p>
+                <p>Количество полетов: 685</p>
+            </div>
+        </div>
+    </div>
+            <div class="crew-member">
+        <img src="/static/img/k2.jpg" alt="Имя члена экипажа" class="crew-photo">
+        <div class="crew-info">
+            <div class="crew-name">Гера Владычица Олимпа</div>
+            <div class="crew-details">
+                <p>Стаж работы: 14 лет</p>
+                <p>Количество полетов: 623</p>
+            </div>
+        </div>
+    </div>
+            <div class="crew-member">
+        <img src="/static/img/k7.jpg" alt="Имя члена экипажа" class="crew-photo">
+        <div class="crew-info">
+            <div class="crew-name">Афина Мудрая Охотница</div>
+            <div class="crew-details">
+                <p>Стаж работы: 12 лет</p>
+                <p>Количество полетов: 590</p>
+            </div>
+        </div>
+    </div>
+            <div class="crew-member">
+        <img src="/static/img/k8.jpg" alt="Имя члена экипажа" class="crew-photo">
+        <div class="crew-info">
+            <div class="crew-name">Леонардо да Винчи Усатый</div>
+            <div class="crew-details">
+                <p>Стаж работы: 18 лет</p>
+                <p>Количество полетов: 789</p>
+            </div>
+        </div>
+    </div>
+            <div class="crew-member">
+        <img src="/static/img/k1.jpg" alt="Имя члена экипажа" class="crew-photo">
+        <div class="crew-info">
+            <div class="crew-name">Клеопатра Золотая Глазка</div>
+            <div class="crew-details">
+                <p>Стаж работы: 16 лет</p>
+                <p>Количество полетов: 700</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %} 
