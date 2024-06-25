@@ -18,10 +18,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
-from airline_website.views import home
+from airline_website.views import home, about, contacts
 
 urlpatterns = [
+    path("", home, name="home"),
+    path("about/", about, name="about"),
+    path("contacts/", contacts, name="contacts"),
     path("admin/", admin.site.urls),
     path("users/", include("users.urls")),
-    path("", home, name="home"),
+    path("crew/", include("crew.urls")),
+    path("flights/", include("flights.urls")),
 ]

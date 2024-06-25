@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Детали рейса {{ flight.flight_number }}</h1>
+<p>Место отправления: {{ flight.departure_location }}</p>
+<p>Место прибытия: {{ flight.arrival_location }}</p>
+<p>Время отправления: {{ flight.departure_time|date:"d.m.Y H:i" }}</p>
+<p>Время прибытия: {{ flight.arrival_time|date:"d.m.Y H:i" }}</p>
+<h2>Экипаж</h2>
+<ul>
+    {% for member in flight.crew.all %}
+        <li>{{ member.name }} - {{ member.role }}</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'flight_list' %}">Вернуться к списку рейсов</a>
+{% endblock %}

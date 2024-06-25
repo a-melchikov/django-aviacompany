@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    /* Стили для центрирования текста */
+    h2, p {
+      text-align: center; 
+      font-family: PT Serif;
+    }
+</style>
+<h2>Расписание нашей авиакомпании</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Номер рейса</th>
+            <th>Место отправления</th>
+            <th>Место прибытия</th>
+            <th>Время отправления</th>
+            <th>Время прибытия</th>
+            <th>Действие</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for flight in flights %}
+        <tr>
+            <td>{{ flight.flight_number }}</td>
+            <td>{{ flight.departure_location }}</td>
+            <td>{{ flight.arrival_location }}</td>
+            <td>{{ flight.departure_time|date:"d.m.Y H:i" }}</td>
+            <td>{{ flight.arrival_time|date:"d.m.Y H:i" }}</td>
+            <td><a href="{% url 'flight_detail' flight.id %}" class="btn btn-primary">Подробнее</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

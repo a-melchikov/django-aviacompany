@@ -4,22 +4,6 @@ from django.contrib import messages
 from .models import CustomUser
 
 
-def home(request):
-    return render(request, "home.html")
-
-
-def about(request):
-    return render(request, "about.html")
-
-
-def flights(request):
-    return render(request, "flights.html")
-
-
-def contacts(request):
-    return render(request, "contacts.html")
-
-
 def user_login(request):
     if request.method == "POST":
         username = request.POST["username"]
